@@ -14,7 +14,15 @@ Author offer a simple example to argue that Adam is not good enough. In example,
 
 ![](https://i.imgur.com/O1fxGc3.png)
 
+To simplify problem, the x is bounded in [-1, 1]. With calculating expected value of loss function. The optimal solution is x = -1, but Adam failed to find optimal solution in experiment.
+
+#### Result
+![](./img/Adam_vs_AMSGrad_SimpleExample.png)
+
 ## Reference
-[1] On the Convergence of Adam and Beyond
-[2] Re-implementation of AMSGrad in TensorFlow
+[1] [On the Convergence of Adam and Beyond](https://openreview.net/pdf?id=ryQu7f-RZ)
+
+[2] [Re-implementation of AMSGrad in TensorFlow](https://colab.research.google.com/drive/1xXFAuHM2Ae-OmF5M8Cn9ypGCa_HHBgfG)
+
+
 
