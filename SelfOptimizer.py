@@ -11,7 +11,7 @@ class AdamOptimizer(tf.train.Optimizer):
         self.var_list = var_list
         self.m = {}
         self.v = {}
-        self.t = tf.Variable(0.0, trainable = True)
+        self.t = tf.Variable(0.0, trainable = False)
         # for bias correction
         self.hat_beta1 = tf.Variable(1.0, trainable = False)
         self.hat_beta2 = tf.Variable(1.0, trainable = False)
