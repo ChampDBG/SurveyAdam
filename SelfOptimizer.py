@@ -2,13 +2,13 @@
 import tensorflow as tf
 
 class AdamOptimizer(tf.train.Optimizer):
-    def __init__(self, learning_rate = 0.001, beta1 = 0.9, beta2 = 0.99, epsilon = 1e-8, var_list = []):
+    def __init__(self, learning_rate = 0.001, beta1 = 0.9, beta2 = 0.99, epsilon = 1e-8):
         self.learning_rate = learning_rate
         self.beta1 = beta1
         self.beta2 = beta2
         self.epsilon = epsilon
 
-        self.var_list = var_list
+        self.var_list = []
         self.m = {}
         self.v = {}
         self.t = tf.Variable(0.0, trainable = False)
@@ -16,6 +16,8 @@ class AdamOptimizer(tf.train.Optimizer):
         self.hat_beta1 = tf.Variable(1.0, trainable = False)
         self.hat_beta2 = tf.Variable(1.0, trainable = False)
 
+    def slot(self, var_list = []):
+        self.var_list = var_list
         for var in self.var_list:
             var_shape = tf.shape(var.initial_value)
             self.m[var] = tf.Variable(tf.zeros(var_shape), trainable = False)
@@ -44,18 +46,20 @@ class AdamOptimizer(tf.train.Optimizer):
 
 
 class AMSGradOptimizer(tf.train.Optimizer):
-    def __init__(self, learning_rate = 0.001, beta1 = 0.9, beta2 = 0.99, epsilon = 1e-8, var_list = []):
+    def __init__(self, learning_rate = 0.001, beta1 = 0.9, beta2 = 0.99, epsilon = 1e-8):
         self.learning_rate = learning_rate
         self.beta1 = beta1
         self.beta2 = beta2
         self.epsilon = epsilon
 
-        self.var_list = var_list
+        self.var_list = []
         self.m = {}
         self.v = {}
         self.v_hat = {}
         self.t = tf.Variable(0.0, trainable = False)
 
+    def slot(self, var_list = []):
+        self.var_list = var_list
         for var in self.var_list:
             var_shape = tf.shape(var.initial_value)
             self.m[var] = tf.Variable(tf.zeros(var_shape), trainable = False)
