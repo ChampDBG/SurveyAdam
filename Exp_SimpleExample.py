@@ -48,8 +48,10 @@ def main():
     results_adam = testing('adam', iteration = 5000000, learning_rate = 0.5)
     results_amsg = testing('amsgrad', iteration = 5000000, learning_rate = 0.5)
 
-    plt.plot(results_adam, label = 'adam')
-    plt.plot(results_amsg, label = 'amsgrad')
+    plt.plot(results_adam, linestyle = '-', label = 'adam')
+    plt.plot(results_amsg, linestyle = '.', label = 'amsgrad')
+    plt.xlabel('Iterations')
+    plt.ylabel('X')
     plt.legend(loc = 'best')
     plt.savefig('./img/Adam_vs_AMSGrad_SimpleExample.png')
     plt.close()
